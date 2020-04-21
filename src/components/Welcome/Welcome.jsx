@@ -5,7 +5,7 @@ class Welcome extends Component {
 
     return (
     
-           <h2>Welcome To React Rouoter </h2>   
+           <h2>Welcome To Home Page  [React Rouoter] </h2>   
         
     );
   }

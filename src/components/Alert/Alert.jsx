@@ -1,12 +1,12 @@
 import React from 'react';
 import PropTypes from 'prop-types';
 
-const Alert =({message, type}) =>{
+const Alert =(props) =>{
 
     return (
-        <div style={{backgroundSize:'20px',backgroundColor:'gray'}}>
+        <div style={{backgroundColor:'gray',height:'120px',textAlign:'center',paddingTop:'30px'}}>
         
-         <h2>{`Message is : ${message}  Type is : ${type}`}</h2>
+         <h2>{`Message is : ${props.message}  Type is : ${props.type}`}</h2>
         </div>
     );
 }
