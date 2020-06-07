@@ -3,7 +3,7 @@ import UserItem from './UserItem'
 
  class Users extends Component {   
     render() {
-        console.log("in users", this.props.users)
+       // console.log("in users", this.props.users)
         return (
             <div style={userStyle}>
                   { 

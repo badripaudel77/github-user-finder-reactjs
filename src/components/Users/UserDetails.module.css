@@ -1,0 +1,14 @@
+.udContainer {
+    width: 90%;
+    border : 1px solid brown;
+    margin : auto;
+    padding : 10px;
+
+}
+.repo {
+    display : 'inline';
+    margin : 'auto';
+    float :  'right';
+    box-shadow: '5px 10px #888888';
+
+}

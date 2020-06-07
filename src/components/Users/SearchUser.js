@@ -61,7 +61,8 @@ const submitStyle = {
     padding:'5px',
     marginLeft : '5%',
     marginTop : '15px',
-    backgroundColor : 'blue'
+    backgroundColor : 'blue',
+    // color : 'white'
 
 }
 const clearStyle = {
@@ -70,7 +71,9 @@ const clearStyle = {
     padding:'5px',
     marginLeft : '5%',
     marginTop : '15px',
-    backgroundColor : 'pink'
+    backgroundColor : 'pink',
+    color : 'black',
+    fontWeight : 'bold'
 
 }
 export default SearchUser
