@@ -1,10 +1,9 @@
 import React, { Component } from 'react'
 import { Link } from 'react-router-dom'
 
-class UserItem extends Component {    
+const UserItem = (props) => {    
 
- render() {
-  const {login, avatar_url } = this.props.user; 
+  const {login, avatar_url } = props.user; 
   // console.log(this.props.user)  
    return (
                 
@@ -15,7 +14,7 @@ class UserItem extends Component {
                      </div>
                       )
     }
-}
+
      const userStyle = {
         width : '200px',
         height :'250px',

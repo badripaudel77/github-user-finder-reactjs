@@ -1,35 +1,24 @@
-import React, {Fragment, Component } from 'react'
+import React, { Component, useEffect } from 'react'
 
 import PropTypes from 'prop-types'
-import { Link } from 'react-router-dom';
 
 import styles from './UserDetails.module.css'
-import { RepoItem } from '../repos/RepoItem';
 import { Repos } from '../repos/Repos';
 
 
-export default class UserDetails extends Component {
+const UserDetails = (props) => {
 
-    componentDidMount() {
-        this.props.getSingleUser(this.props.match.params.username);
-        this.props.userRepos(this.props.match.params.username);
-    }
-    static propTypes = {
-     //loading : PropTypes.bool.isRequired,
-     user : PropTypes.object,
-     userRepos : PropTypes.func,
-     repos : PropTypes.array
-    }
-
-    render() {
-    //console.log(this.props.user)
-        const { user, loading } = this.props;
+    useEffect(() => {
+        props.getSingleUser(this.props.match.params.username);
+        props.userRepos(this.props.match.params.username);
+    },[])
+    //console.log(props.user)
+        const { user, loading } = props;
             //console.log(this.props)
-        if(loading || !this.props.user) {
+        if(loading || !props.user) {
             return <div>User is Loading, Please wait. </div>
         }
         return (
-              
                     <div className={styles.udContainer}>
                         <img 
                         style={imageStyle}
@@ -43,7 +32,7 @@ export default class UserDetails extends Component {
                             <p>{user.bio}</p>
                             <div>
                                 <h3>Repositories : </h3>
-                                <Repos repos={this.props.repos}/>
+                                <Repos repos={props.repos}/>
                            </div> 
                         </div>
         
@@ -56,8 +45,7 @@ export default class UserDetails extends Component {
                          href={user.html_url} >Actual Profile</a>
                     </div> 
         )
-    }
-}
+        }
 
 const imageStyle = {
     borderRadius : '50%',
@@ -70,3 +58,12 @@ const bioStyle = {
     width : '60%',
     boxShadow: '5px 10px #888888'
 }
+
+UserDetails.propTypes = {
+    //loading : PropTypes.bool.isRequired,
+    user : PropTypes.object,
+    userRepos : PropTypes.func,
+    repos : PropTypes.array
+   }
+
+   export default UserDetails;
