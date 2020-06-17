@@ -1,20 +1,18 @@
-import React, { Component } from 'react'
+import React, { useEffect } from 'react'
 import UserItem from './UserItem'
 
- class Users extends Component {   
-    render() {
+ const Users = (props) =>{   
        // console.log("in users", this.props.users)
         return (
             <div style={userStyle}>
                   { 
-                        this.props.users.map(user =>(
+                        props.users.map(user =>(
                            <UserItem key ={user.id} user={user} />
                        ))
                    }
             </div>
         )
     }
-}
 const userStyle = {
     display : 'grid',
     gridTemplateColumns : 'repeat(3, 1fr)',
