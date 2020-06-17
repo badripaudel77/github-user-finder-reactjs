@@ -1,52 +1,51 @@
-import React, { Component } from 'react'
+import React, { useState } from 'react'
 
- class SearchUser extends Component {
-         state = {
-             searchTerm : ""
-         }
-          onInputChange = (e) => {
+ const SearchUser = ({onSearchUser, onClearField, showClear }) => {
+
+    const [searchTerm, setSearchTerm] = useState("")
+        
+    const  onInputChange = (e) => {
               //easier if we have multiple fields like name,email, .........
-            this.setState({[e.target.name] : e.target.value }) //looks for name searchTerm
+            setSearchTerm(e.target.value) //looks for name searchTerm
          }
-         onFormSubmit = (e) => {
+        const onFormSubmit = (e) => {
              e.preventDefault();
-             this.props.onSearchUser(this.state.searchTerm)
-             this.setState({searchTerm : ""})
+             onSearchUser(searchTerm)
+             setSearchTerm("")
          }
 
-         onClearField = (e) =>{
-             this.props.onClearField();
+        const onAllClearField = (e) =>{
+             onClearField();
              e.preventDefault();
          }
 
-    render() {
         return (
             <div>
-                <form onSubmit={this.onFormSubmit}>
+                <form onSubmit={onFormSubmit}>
                     <input type="text" name= "searchTerm"  
                     placeholder="search user ....... "
                     style={searchUserStyle}
-                    onChange={this.onInputChange}
-                    value={this.state.searchTerm}
+                    onChange={onInputChange}
+                    value={searchTerm}
                     />
                     <input
                      type="submit" value= "Search User" 
                      style={submitStyle}
-                     disabled={this.state.searchTerm.length >=1 ?false : true }
+                     disabled={searchTerm.length >=1 ? false : true }
                      />
                      {
-                        this.props.showClear &&  
+                        showClear &&  
                         <input
                         type="button" value= "Clear All" 
                         style={clearStyle}
-                        onClick={this.onClearField}
+                        onClick={onAllClearField}
                         />
-                   }
+                    }
                 </form>
             </div>
         )
     }
-}
+
 const searchUserStyle = {
          width:'90%',
          height:'20px',
@@ -63,8 +62,8 @@ const submitStyle = {
     marginTop : '15px',
     backgroundColor : 'blue',
     // color : 'white'
-
 }
+
 const clearStyle = {
     width:'91%',
     height:'30px',
@@ -76,4 +75,5 @@ const clearStyle = {
     fontWeight : 'bold'
 
 }
+
 export default SearchUser

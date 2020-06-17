@@ -13,12 +13,11 @@ export default class UserDetails extends Component {
     componentDidMount() {
         this.props.getSingleUser(this.props.match.params.username);
         this.props.userRepos(this.props.match.params.username);
-    
     }
     static propTypes = {
      //loading : PropTypes.bool.isRequired,
-     user : PropTypes.object.isRequired,
-     userRepos : PropTypes.func.isRequired,
+     user : PropTypes.object,
+     userRepos : PropTypes.func,
      repos : PropTypes.array
     }
 

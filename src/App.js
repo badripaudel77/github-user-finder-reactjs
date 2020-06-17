@@ -20,7 +20,7 @@ import About from './components/layouts/About'
     }
 
     async componentDidMount() {
-        console.log(process.env.REACT_APP_GITHUB_CLIENT_SECRET)
+        // console.log(process.env.REACT_APP_GITHUB_CLIENT_SECRET)
          this.setState({isLoading: true})
          const res = await axios.get(`https://api.github.com/users?client_id=${process.env.REACT_APP_GITHUB_CLIENT_ID}&client_secret=${process.env.REACT_APP_GITHUB_CLIENT_SECRET}`)
         // console.log(res.data)
@@ -47,7 +47,7 @@ import About from './components/layouts/About'
  getRepos = async (username) => {
     // console.log(searchTerm)
     this.setState({isLoading : true})
-    const res = await axios.get(`https://api.github.com/users/${username}/repos?per_page=5&sort=created:asc&client_id=${process.env.REACT_APP_GITHUB_CLIENT_ID}&client_secret=${process.env.REACT_APP_GITHUB_CLIENT_SECRET}`)
+    const res = await axios.get(`https://api.github.com/users/${username}/repos?per_page=10&sort=created:asc&client_id=${process.env.REACT_APP_GITHUB_CLIENT_ID}&client_secret=${process.env.REACT_APP_GITHUB_CLIENT_SECRET}`)
     // console.log(res.data)
     this.setState({ repos : res.data, isLoading : false})
  }
@@ -81,7 +81,7 @@ import About from './components/layouts/About'
                                       {/* single router, just a single component */}
                                      <Route exact path="/about" component={About} />
                                      {/* show PageNotFound if any other url except definde  */}
-                                     {/* for the singlel user like /user/username */} 
+                                     {/* for the single user like /user/username */} 
                                         <Route
                                             exact path='/users/:username/'
                                             render={ (props) => (
@@ -95,8 +95,7 @@ import About from './components/layouts/About'
                                                   )      
                                          }
                                         />
-                       <Route path="*" component={PageNotFound} /> 
-
+                                  <Route path="*" component={PageNotFound} /> 
                              </Switch> 
                         </div> 
             </Router>  
