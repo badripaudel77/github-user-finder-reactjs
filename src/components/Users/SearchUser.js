@@ -2,22 +2,22 @@ import React, { useState } from 'react'
 
  const SearchUser = ({onSearchUser, onClearField, showClear }) => {
 
-    const [searchTerm, setSearchTerm] = useState("")
+    const [searchTerm, setSearchTerm] = useState("");
         
     const  onInputChange = (e) => {
               //easier if we have multiple fields like name,email, .........
             setSearchTerm(e.target.value) //looks for name searchTerm
-         }
+         };
         const onFormSubmit = (e) => {
              e.preventDefault();
              onSearchUser(searchTerm)
              setSearchTerm("")
-         }
+         };
 
         const onAllClearField = (e) =>{
              onClearField();
              e.preventDefault();
-         }
+         };
 
         return (
             <div>

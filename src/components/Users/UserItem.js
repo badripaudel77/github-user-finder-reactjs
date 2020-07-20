@@ -3,7 +3,10 @@ import { Link } from 'react-router-dom'
 
 const UserItem = (props) => {    
 
+  if(!props.user) return;
+
   const {login, avatar_url } = props.user; 
+  //console.log(login, "useritem.js");
   // console.log(this.props.user)  
    return (
                 

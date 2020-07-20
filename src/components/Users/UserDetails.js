@@ -1,4 +1,4 @@
-import React, { Component, useEffect } from 'react'
+import React, {  useEffect } from 'react'
 
 import PropTypes from 'prop-types'
 
@@ -6,18 +6,17 @@ import styles from './UserDetails.module.css'
 import { Repos } from '../repos/Repos';
 
 
-const UserDetails = (props) => {
-
+const UserDetails = ({ user, repos, loading, getSingleUser, userRepos, match }) => {
+    
     useEffect(() => {
-        props.getSingleUser(this.props.match.params.username);
-        props.userRepos(this.props.match.params.username);
-    },[])
-    //console.log(props.user)
-        const { user, loading } = props;
-            //console.log(this.props)
-        if(loading || !props.user) {
+        getSingleUser(match.params.username);
+        userRepos(match.params.username);
+    }, []);
+
+    if(loading || !user) {
             return <div>User is Loading, Please wait. </div>
         }
+
         return (
                     <div className={styles.udContainer}>
                         <img 
@@ -32,8 +31,8 @@ const UserDetails = (props) => {
                             <p>{user.bio}</p>
                             <div>
                                 <h3>Repositories : </h3>
-                                <Repos repos={props.repos}/>
-                           </div> 
+                                <Repos repos={repos}/>
+                            </div> 
                         </div>
         
                         <h1>Name : {user.name}</h1>  
@@ -50,20 +49,20 @@ const UserDetails = (props) => {
 const imageStyle = {
     borderRadius : '50%',
     margin : 'auto'
-}
+};
 const bioStyle = {
     display : 'inline',
     margin : 'auto',
     float :  'right',
     width : '60%',
     boxShadow: '5px 10px #888888'
-}
+};
 
 UserDetails.propTypes = {
     //loading : PropTypes.bool.isRequired,
     user : PropTypes.object,
     userRepos : PropTypes.func,
     repos : PropTypes.array
-   }
+   };
 
    export default UserDetails;
